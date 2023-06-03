@@ -1,20 +1,19 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
+import css from 'components/Layout/Layout.module.css'
 
 const Layout = () => {
   return (
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li> 
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-      </ul>
+    <container>
+      <header>
+        <nav> 
+          <NavLink to="/" className={css.link}>Home</NavLink>
+          <NavLink to="/movies" className={css.link}>Movies</NavLink>
+        </nav>
+      </header>
       <main>
          <Outlet />
       </main>
-    </div>
+    </container>
   );
 };
 

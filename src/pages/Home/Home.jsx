@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'services/api';
-import MovieList from 'components/MovieList';
+import MovieList from 'components/MovieList/MovieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +13,7 @@ const Home = () => {
         setLoading(false);
       })
       .catch(error => {
-        console.error('Помилка отримання популярних фільмів:', error);
+        console.error('Oops, something went wrong', error);
         setLoading(false);
       });
   }, []);

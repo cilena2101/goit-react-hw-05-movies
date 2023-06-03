@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
-import MovieList from 'components/MovieList';
+import MovieList from 'components/MovieList/MovieList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -42,40 +42,6 @@ const Movies = () => {
       <button onClick={handleSearch}>Search</button>
 
       {movies.length > 0 && <MovieList movies={movies} />}
-
-
-
-{/* <ul >
-        {movies.length !== 0 ? (
-          movieSearch.map((mov) => (
-            <li key={mov.id}>
-              <Link to={`${mov.id}`} from={{ from: location }}>
-                <div className={css.boxmov}>
-                  <div>
-                    {mov?.poster_path ? (
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500/${mov?.poster_path}`}
-                        width="200"
-                        alt={mov?.title}
-                      />
-                    ) : (
-                      <img
-                        src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg"
-                        width="200"
-                        alt="No poster"
-                      />
-                    )}
-                  </div>
-
-                  <div>{mov.title}</div>
-                </div>
-              </Link>
-            </li>
-          ))
-        ) : (
-          <p>No results</p>
-        )}
-      </ul> */}
 
     </>
   );

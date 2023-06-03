@@ -1,11 +1,10 @@
 import { getMovieById } from 'services/api';
-import { useParams, Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 
+import css from './MoviesDetails.module.css';
+
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w300/';
-// const PLACEHOLDER = 'https://via.placeholder.com/182x273';
 
 const MoviesDetails = () => {
   const [movie, setMovie] = useState('');
@@ -26,10 +25,9 @@ const MoviesDetails = () => {
 
   return (
     <>
-      <div>
-        <Link to={'/'}> Go back </Link>
-      </div>
-      <div>
+        <Link to={location.state.from}> Go back </Link>
+
+      <div className={css.container}>
         {movie && (
           <img
             src={`${BASE_POSTER_URL}${movie.poster_path}`}
@@ -37,16 +35,17 @@ const MoviesDetails = () => {
           />
         )}
 
-        <h2>{movie.title}</h2>
-        <div>Rating: {Math.round(movie.vote_average)}</div>
+      <div>
+        <h1>{movie.title}</h1>
+        <div>User Score: {Math.round(movie.vote_average) *10}%</div>
         <h2>Overview</h2>
         <div>{movie.overview}</div>
-        <h2>Genres</h2>
-        <div>
-          {movie.genres?.map(genre => (
-            <li key={genre.id}>{genre.name}</li>
+        <h3>Genres</h3>     
+          {movie.genres?.map((genre) => (
+            <span key={genre.id} className={css.genres}>{genre.name}</span>
           ))}
-        </div>
+
+      </div>
       </div>
       <div>
         <h2>Additional information</h2>

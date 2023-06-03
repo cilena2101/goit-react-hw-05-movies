@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    padding: 10px 5px;
+    border-bottom: 2px solid grey;
+}
+
+img {
+    margin-right: 20px;
+}
+
+.genres:not(last-child) {
+    margin-right: 12px;
+  }
+
+  .wrapper {
+    border-bottom: 2px solid grey;
+  }

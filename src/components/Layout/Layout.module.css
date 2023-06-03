@@ -1,0 +1,21 @@
+container {
+  display: block;
+  padding-left: 20px;
+}
+
+header {
+    border-bottom: 2px solid gray;
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+  
+.link {
+    display: inline-block;
+    text-decoration: none;
+    margin: 10px;
+     &[aria-current="page"] {
+      color: #370e39;
+      font-weight: 800;
+    } 
+}
+
