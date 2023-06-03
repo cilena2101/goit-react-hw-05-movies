@@ -15,3 +15,7 @@ img {
   .wrapper {
     border-bottom: 2px solid grey;
   }
+
+  .goBack {
+    text-decoration: none;
+  }

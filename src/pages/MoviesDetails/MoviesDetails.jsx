@@ -1,15 +1,16 @@
 import { getMovieById } from 'services/api';
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 
 import css from './MoviesDetails.module.css';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w300/';
 
 const MoviesDetails = () => {
-  const [movie, setMovie] = useState('');
-  const { movieId } = useParams();
   const location = useLocation();
+  const [movie, setMovie] = useState('');
+  const backLinkLocationRef = useRef(location.state?.from ?? 'movies');
+  const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -25,7 +26,7 @@ const MoviesDetails = () => {
 
   return (
     <>
-        <Link to={location.state.from}> Go back </Link>
+        <Link to={backLinkLocationRef.current} className={css.goBack}> &#8592;Go back </Link>
 
       <div className={css.container}>
         {movie && (
@@ -51,12 +52,12 @@ const MoviesDetails = () => {
         <h2>Additional information</h2>
         <ul>
           <li>
-            <Link to="cast" state={location.state}>
+            <Link to="cast">
               Cast
             </Link>
           </li>
           <li>
-            <Link to="reviews" state={location.state}>
+            <Link to="reviews">
               Reviews
             </Link>
           </li>
