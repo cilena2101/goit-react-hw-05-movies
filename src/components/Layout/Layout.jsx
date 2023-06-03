@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 
 const Layout = () => {
   return (
-    <container>
+    <>
       <header>
         <nav> 
           <NavLink to="/" className={css.link}>Home</NavLink>
@@ -16,7 +16,7 @@ const Layout = () => {
          <Outlet />
         </Suspense>
       </main>
-    </container>
+    </>
   );
 };
 

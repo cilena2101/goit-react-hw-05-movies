@@ -28,7 +28,7 @@ const MoviesDetails = () => {
     <>
         <Link to={backLinkLocationRef.current} className={css.goBack}> &#8592;Go back </Link>
 
-      <div className={css.container}>
+      <div className={css.movieContainer}>
         {movie && (
           <img
             src={`${BASE_POSTER_URL}${movie.poster_path}`}

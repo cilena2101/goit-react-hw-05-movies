@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCastMovie } from 'services/api';
-import css from 'components/Cast/Cast.module.css'
+import css from 'components/Cast/Cast.module.css';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w200/';
 const CastMovie = () => {
   const [cast, setCast] = useState([]);
-  const {movieId} = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -16,7 +16,7 @@ const CastMovie = () => {
       } catch (evt) {
         console.log(evt);
       }
-    }
+    };
     fetchCast();
   }, [movieId]);
 
@@ -24,8 +24,11 @@ const CastMovie = () => {
     <div className={css.castWrapper}>
       {cast.map(({ id, profile_path, name, character }) => (
         <div key={id} className={css.casts}>
-          <img src={`${BASE_POSTER_URL}${profile_path}`} 
-          alt={name} />
+          {profile_path ? (
+            <img src={`${BASE_POSTER_URL}${profile_path}`} alt={name} />
+          ) : (
+            <div>No poster available</div>
+          )}
           <p> {`${name}`}</p>
           <p>Character: {`${character}`}</p>
         </div>
